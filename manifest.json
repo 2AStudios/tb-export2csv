@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extension_name__",
+  "description": "__MSG_extension_description__",
+  "version": "1.0",
+  "author": "Tony Novak, Tony Yin",
+  "homepage_url": "https://github.com/2AStudios/tb-export2csv.git",
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "helpme@2advancedlabs.com",
+      "strict_max_version": "115.*"
+    }
+  },
+  "permissions": ["accountsRead", "messagesRead", "downloads", "menus"],
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "256": "images/tbe2c-icon_256.png",
+    "128": "images/tbe2c-icon_128.png",
+    "64": "images/tbe2c-icon_64.png",
+    "32": "images/tbe2c-icon_32.png",
+    "16": "images/tbe2c-icon_16.png"
+  }
+}

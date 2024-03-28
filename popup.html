@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Popup</title>
+    <script src="popup.js" type="module"></script>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <div id="folder" class="folder">Folder Name</div>
+
+    <div class="info-wrapper">
+      <div>Total messages: <span id="total">0</span></div>
+
+      <div>Processed: <span id="current">0</span></div>
+
+      <div>Skipped by error: <span id="skip">0</span></div>
+
+      <div class="progress-wrapper">
+        <div class="progress-bar">
+          <span
+            id="progress"
+            class="progress-bar-fill"
+            style="width: 0%"
+          ></span>
+        </div>
+      </div>
+
+      <div id="error"></div>
+    </div>
+
+    <footer>
+      <div id="status">Starting</div>
+      <div>
+        <input
+          id="button_download_csv"
+          type="button"
+          data="cancel"
+          value="Download CSV"
+        />
+        <input id="button_cancel" type="button" data="cancel" value="Close" />
+      </div>
+    </footer>
+  </body>
+</html>

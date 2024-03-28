@@ -1,0 +1,30 @@
+{
+  "extension_name": {
+    "message": "Thunderbird Email Exporter"
+  },
+  "extension_description": {
+    "message": "Thunderbird extension that exports all senders' email and full name of a folder to a CSV file."
+  },
+  "save_as_csv": {
+    "message": "Export all senders to CSV",
+    "description": "Extracts all sender names and corresponding email addresses and saves them into a CSV file."
+  },
+  "label_sender": {
+    "message": "Sender (From)"
+  },
+  "label_email": {
+    "message": "Email (From)"
+  },
+  "label_date": {
+    "message": "Date Sent"
+  },
+  "label_to": {
+    "message": "To"
+  },
+  "label_subject": {
+    "message": "subject"
+  },
+  "label_body": {
+    "message": "Body"
+  }
+}
