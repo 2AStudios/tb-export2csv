@@ -30,6 +30,26 @@ export function getSender(message = {}) {
   return { ...res, to, date, subject };
 }
 
+export function getPlainTextFromMessage(message = {}) {
+  const queue = [message];
+  const body = [];
+  const html = [];
+
+  while (queue.length) {
+    const part = queue.pop();
+    if (part?.contentType === "text/plain") {
+      body.push(part.body);
+    } else if (part?.contentType === "text/html") {
+      html.push(part.body);
+    }
+    if (part?.parts?.length) {
+      queue.push(...part?.parts);
+    }
+  }
+
+  return body.length ? body.join("\n\n") : html?.[0];
+}
+
 export function objectArrayToCSV(args) {
   const { columnDelimiter = ",", lineDelimiter = "\n", data } = args;
 

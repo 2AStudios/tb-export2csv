@@ -1,5 +1,9 @@
 import { getTotalMessages, downloadCSV } from "./modules/browser.js";
-import { getSender, objectArrayToCSV } from "./modules/parser.js";
+import {
+  getSender,
+  getPlainTextFromMessage,
+  objectArrayToCSV,
+} from "./modules/parser.js";
 
 window.addEventListener("load", onLoad);
 
@@ -62,11 +66,12 @@ async function startParsingMessages() {
     statusSpan.textContent = "Fetching Messages..";
     senders = [];
     for (let i = 0; i < messages.length; i++) {
-      let full = await messenger.messages.getFull(messages[i].id);
+      const full = await messenger.messages.getFull(messages[i].id);
 
-      // TODO: remove
-      console.log(full);
-      senders.push(getSender(messages[i]));
+      senders.push({
+        ...getSender(messages[i]),
+        body: getPlainTextFromMessage(full),
+      });
 
       currentSpan.textContent = i + 1 + "";
       progressBar.style.width =
