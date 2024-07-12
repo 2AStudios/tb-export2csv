@@ -65,7 +65,7 @@ export function objectArrayToCSV(args) {
     (str, item) =>
       str +
       Object.values(item)
-        .map((str) => `"${str.replaceAll('"', '""')}"`)
+        .map((str) => str ? `"${str.replaceAll('"', '""')}"` : "")
         .join(columnDelimiter) +
       lineDelimiter,
     result

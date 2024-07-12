@@ -13,7 +13,7 @@ export async function* getMessages(folder) {
 }
 
 export async function getTotalMessages(folder) {
-  let page = await messenger.messages.list(folder);
+  let page = await messenger.messages.list(folder.id);
   const messages = page.messages;
 
   while (page.id) {
