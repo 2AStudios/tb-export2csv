@@ -9,7 +9,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "helpme@2advancedlabs.com",
-      "strict_max_version": "115.*"
+      "strict_min_version": "128.0"
     }
   },
   "permissions": ["accountsRead", "messagesRead", "downloads", "menus"],
