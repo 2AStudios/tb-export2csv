@@ -72,7 +72,7 @@ async function startParsingMessages() {
 
       senders.push({
         ...getSender(messages[i]),
-        body: getPlainTextFromMessage(full),
+        body: await getPlainTextFromMessage(messages[i].id),
       });
 
       currentSpan.textContent = i + 1 + "";

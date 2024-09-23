@@ -30,24 +30,35 @@ export function getSender(message = {}) {
   return { ...res, to, date, subject };
 }
 
-export function getPlainTextFromMessage(message = {}) {
-  const queue = [message];
-  const body = [];
-  const html = [];
+export async function getPlainTextFromMessage(messageId) {
+  try {
+    // Use the new API in TB 128 to list inline text parts
+    const parts = await messenger.messages.listInlineTextParts(messageId);
+    console.log(parts);
+    if (!parts || parts.length === 0) {
+      return "(No content)";
+    }
 
-  while (queue.length) {
-    const part = queue.pop();
-    if (part?.contentType === "text/plain") {
-      body.push(part.body);
-    } else if (part?.contentType === "text/html") {
-      html.push(part.body);
+    // Extract text/plain or convert text/html to plain text
+    let body = "";
+    for (let part of parts) {
+      if (part.contentType === "text/plain") {
+        body += part.content + "\n\n";
+      } else if (part.contentType === "text/html") {
+        body += await messenger.messengerUtilities.convertToPlainText(
+          part.content
+        );
+      }
     }
-    if (part?.parts?.length) {
-      queue.push(...part?.parts);
-    }
+
+    return body.trim();
+  } catch (error) {
+    console.error(
+      `Error fetching inline text parts for messageId ${messageId}:`,
+      error
+    );
+    return "(Error retrieving message content)";
   }
-
-  return body.length ? body.join("\n\n") : html?.[0];
 }
 
 export function objectArrayToCSV(args) {
@@ -65,7 +76,7 @@ export function objectArrayToCSV(args) {
     (str, item) =>
       str +
       Object.values(item)
-        .map((str) => str ? `"${str.replaceAll('"', '""')}"` : "")
+        .map((str) => (str ? `"${str.replaceAll('"', '""')}"` : ""))
         .join(columnDelimiter) +
       lineDelimiter,
     result
