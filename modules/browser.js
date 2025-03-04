@@ -24,11 +24,13 @@ export async function getTotalMessages(folder) {
   return messages;
 }
 
-export function downloadCSV(csv) {
+export function downloadCSV(csv, folderName) {
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const filename = folderName ? `${folderName}.csv` : "export.csv";
+
   messenger.downloads.download({
     url: URL.createObjectURL(blob),
-    filename: `${folder.name}.csv`,
+    filename: filename,
     saveAs: true,
   });
 }

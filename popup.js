@@ -10,6 +10,7 @@ window.addEventListener("load", onLoad);
 let folderSpan, totalSpan, currentSpan, progressBar, errorSpan, statusSpan;
 
 let senders;
+let folderName; // Store the folder name here
 
 async function onLoad() {
   initializeUIElements();
@@ -41,7 +42,7 @@ async function handleClose(event) {
 
 async function handleDownloadCSV() {
   const csv = objectArrayToCSV({ data: senders });
-  downloadCSV(csv);
+  downloadCSV(csv, folderName);
 }
 
 async function startParsingMessages() {
@@ -56,6 +57,7 @@ async function startParsingMessages() {
 
     // Gets the current displayed folder on the active tab on the active window
     const folder = tabs?.[0]?.displayedFolder;
+    folderName = folder.name; // Save folder name for use in download
     folderSpan.textContent = folder.name;
 
     statusSpan.textContent = "Getting Total Messages..";
