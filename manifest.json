@@ -1,8 +1,8 @@
 {
-  "manifest_version": 4,
+  "manifest_version": 3,
   "name": "__MSG_extension_name__",
   "description": "__MSG_extension_description__",
-  "version": "4.0",
+  "version": "4.3.25",
   "author": "Tony Novak, Tony Yin",
   "homepage_url": "https://github.com/2AStudios/tb-export2csv.git",
   "default_locale": "en",
