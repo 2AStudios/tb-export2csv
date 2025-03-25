@@ -1,14 +1,14 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 4,
   "name": "__MSG_extension_name__",
   "description": "__MSG_extension_description__",
-  "version": "1.0",
+  "version": "4.0",
   "author": "Tony Novak, Tony Yin",
   "homepage_url": "https://github.com/2AStudios/tb-export2csv.git",
   "default_locale": "en",
   "browser_specific_settings": {
     "gecko": {
-      "id": "helpme@2advancedlabs.com",
+      "id": "helpme@2advanced.com",
       "strict_min_version": "128.0"
     }
   },
